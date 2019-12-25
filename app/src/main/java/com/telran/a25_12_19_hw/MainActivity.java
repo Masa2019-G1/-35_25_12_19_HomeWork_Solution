@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showEditView(ContactRow contact, int position) {
-        Intent intent = new Intent(this, ContactActivity.class);
+        Intent intent = new Intent(this, ContactBindActivity.class);
         if (contact != null) {
             intent.putExtra("NAME", contact.name);
             intent.putExtra("PHONE", contact.phone);
