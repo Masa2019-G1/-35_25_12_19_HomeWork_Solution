@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -28,6 +29,15 @@ public class MainActivity extends AppCompatActivity {
         contactList.setAdapter(adapter);
 
         showEmpty(adapter.getCount() == 0);
+
+        addBtn.setOnClickListener(v->{
+            showEditView(null,-1);
+        });
+
+        contactList.setOnItemClickListener((parent, view, position, id) -> {
+            ContactRow contact = (ContactRow) adapter.getItem(position);
+            showEditView(contact,position);
+        });
     }
 
     private void showEditView(ContactRow contact, int position) {
@@ -60,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                             data.getStringExtra("PHONE"),
                             data.getStringExtra("ADDRESS"));
                     break;
-                case "DELETE":
+                case "REMOVE":
                     removeContactFromList(data.getIntExtra("POSITION",-1));
                     break;
             }
@@ -75,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
                                   String address) {
         ContactRow contact = new ContactRow(name, phone, email, address);
         adapter.add(contact);
+        showEmpty(false);
     }
 
     private void removeContactFromList(int position) {
