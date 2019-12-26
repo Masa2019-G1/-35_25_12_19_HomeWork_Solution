@@ -30,6 +30,6 @@ public class ContactBindActivity extends AppCompatActivity {
                     getIntent().getIntExtra("POSITION",-1));
         }
 
-        binding.setViewModel(viewModel);
+        binding. setViewModel(viewModel);
     }
 }

@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         addBtn = findViewById(R.id.addBtn);
         contactList = findViewById(R.id.contactList);
         adapter = new ContactAdapter();
+        adapter.add(new ContactRow("Vasya","1234556","vasya@mail.com","Tel Aviv"));
         contactList.setAdapter(adapter);
 
         showEmpty(adapter.getCount() == 0);
